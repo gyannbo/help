@@ -1,0 +1,49 @@
+HELP NVIM
+--------------------
+
+
+
+
+
+
+
+
+
+
+--------------------
+NAVIGATING BIG CODEBASE WITH GREP
+
+-find . -name '*.c' | xargs grep ' main(' 
+
+// Pour matcher tous les fichies .c récursivement à partir du current dir. Je ne sais pas pourquoi je dois mettre des //
+// quotes sur find, ça ne fonctionne pas sinon. //
+
+
+
+-find . name '*.c' | grep main -
+./src/tool_main.c
+./packages/OS400/curlmain.c
+./lib/dllmain.c
+
+-find . name '*.c' | xargs grep main 
+...
+...
+./lib/url.c:    char *unix_path = conn->unix_domain_socket;
+./lib/url.c:    conn->unix_domain_socket = strdup(data->set.str[STRING_UNIX_SOCKET_PATH]);
+./lib/url.c:    if(!conn->unix_domain_socket) {
+./lib/amigaos.c:    ISocket = (struct SocketIFace *)GetInterface(base, "main", 1, NULL);
+./lib/amigaos.c:      ISocket = (struct SocketIFace *)GetInterface(base, "main", 1, NULL);
+./lib/cfilters.c:    /* Some filter ask during shutdown for this, mainly for debugging
+./lib/ws.c: * converting payloads, tracking remaining data in current frame */
+./lib/ws.c:  curl_off_t payload_remain;  /* remaining payload of current */
+./lib/ws.c:  curl_off_t remain = dec->payload_len - dec->payload_offset;
+./lib/ws.c:  while(remain && Curl_bufq_peek(inraw, &inbuf, &inlen)) {
+...
+...
+
+// grep a une option pour prendre sur le STDIN, mais il cherche le pattern dans l'input du STDIN plutôt que dans les fichiers //
+// correspondant. //
+
+find . -name \*.c
+
+// fonctionne aussi. Le shell ne dois pas faire l'expansion, car il ne dois pas avoir plusieurs patterns //
