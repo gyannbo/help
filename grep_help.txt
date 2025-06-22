@@ -1,0 +1,63 @@
+GREP HELP
+--------------------
+
+
+
+--------------------
+GREP DANS VIM
+
+Dans vim grep fait -r par défaut, ne pas le rajjouter
+Pour avoir les lignes qui match 'void main'( ou 'int main('.
+On peut faire 'cd' en commande vim pour changer grep de directory.
+
+
+
+--------------------
+TROUVER LE MAIN 
+
+grep -r '\w+\W+main\('
+
+
+ou meme
+
+
+grep -r '^[^*]\w+\W+main\(' 
+
+pour ne pas avoir les lignes commentées qui parlent du main.
+
+
+--------------------
+TROUVER STRUCT SANS DEFINE 
+
+grep -r 'struct\W+StructName\W*{'		// En c
+
+
+
+--------------------
+TROUVER UN DEFINE
+
+
+grep -r '.*define.*definename'
+
+
+
+--------------------
+TROUVER UN TYPEDEF
+
+
+grep -r 'typdefname;'		// En c
+
+// attention un typedefe ça peut etre struct, mais aussi enum //
+
+
+--------------------
+TROUVER UN ENUM MEMBER
+
+grep -r 'enummembername,.*'
+
+--------------------
+TROUVER DEFINITION DE FONCTION
+
+grep -r '\w+\W+functionname\(.*[^;]$'
+
+// .*[^;]$ pour éviter d'avoir le header //

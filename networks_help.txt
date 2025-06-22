@@ -1,0 +1,54 @@
+NETWORKS HELP
+--------------------
+
+
+
+
+
+
+
+
+
+--------------------
+COLISION DOMAINS
+
+
+
+--------------------
+DIFFUSION DOMAINS
+
+
+
+
+--------------------
+spanning tree protool et problemede tempete de diffusions
+
+
+
+--------------------
+SWITCH
+
+-Article wikipédia en français est pas mal.
+
+-Couche liaison du modle OSI. Contrairement au Hub il ne transmet pas les paquets sur toutes ses connections (sauf en cas de
+signal de broadcast je crois). 
+
+-CAM table, FIB forward information base
+
+-Un switch utilise les frame ethernet pour savoir la MAC address source du port sur lequel il reçoit la frame, afin de pouvoir
+envoyer sur ce port là si jamais il reçoit un paquet pour cette destination. Si il n'a pas la destination dans sa table, il
+
+mac address du switch pour pouvoir ssh dedans ou pour communiquer sur un reseau entre les switchs pour des trucs comme le 
+spanning protocol.
+
+-expliquer que switch doit avoir mac address pour spanning tree protocol, et pouruqoi.
+
+
+--------------------
+ARP PROTOCOL
+
+
+
+
+--------------------
+HOW IS MULTIPLEXING DONE AT THE PHYSICAL LAYER ? 
