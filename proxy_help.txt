@@ -1,0 +1,15 @@
+PROXY HELP
+--------------------
+
+
+
+
+--------------------
+PROXY ON GIT
+
+[http]
+	proxy = http://guillaume.bonis2025@proxy44-far.ad.campus-eni.fr:8080
+
+-Pas besoin de mettre le mot de passe, le shell promptera pour le mot de passe.
+Pour pouvoir push il faudra générer un token github et s'authentifier en ligne de commande 
+lorsqu'on pushera.

@@ -44,13 +44,13 @@ signal de broadcast je crois).
 -CAM table, FIB forward information base
 
 -Un switch utilise les frame ethernet pour savoir la MAC address source du port sur lequel il reçoit la frame, afin de pouvoir
-envoyer sur ce port là si jamais il reçoit un paquet pour cette destination. Si il n'a pas la destination dans sa table, il envoie
-la trame ethernet sur tous ses ports.
-Dans ce cas là je ne crois même pas que la source réponds. Le switch ne mettra une adresse MAC dans sa table seulement lorsqu'il
-fait transiter un packet. Lorsqu'il reçoit un paquet il note l'adresse MAC de la source si il ne la connait pas, avec en 
-correspondance le port sur lequel il a reçu le paquet. Il ne faut pas confondre ça avec un broadcast ARP lorsqu'un ordinateur
-ne connait pas l'adresse MAC d'un appareil sur son réseau.
-Un switch donc ne touche pas aux addresses MAC dans les paquets
+envoyer sur ce port là si jamais il reçoit un paquet pour cette destination. Si il n'a pas la destination dans sa table, il 
+envoit le paquets sur tous ses ports. Si il a l'adresse MAC dans sa table il enverra sur le port correspondant.
+Par exemple dans le cas de deux machines séparées par deux switchs, quand le paquet arrive sur le premier switch et le switch
+ne connais pas l'adresse MAC il flood ses ports, et donc le deuxieme switch, qui lui meme floodera ses ports. La deuxième
+machine reçoit le paquet et envoie la réponse, et la les switchs mettront l'adresse de la deuxième machine dans leur table 
+et la prochaine fois ne flooderont pas le réseau.
+Un switch ne change pas l'ip dans le paquet, ce que peux faire un routeur.
 
 mac address du switch pour pouvoir ssh dedans ou pour communiquer sur un reseau entre les switchs pour des trucs comme le 
 spanning protocol.
