@@ -24,6 +24,14 @@ DIFFUSION DOMAINS
 spanning tree protool et problemede tempete de diffusions
 
 
+--------------------
+NETWORK SEGMENT
+
+-layer 1 segment
+-layer 2 segment
+-layer 3 segment
+
+
 
 --------------------
 SWITCH
@@ -36,7 +44,13 @@ signal de broadcast je crois).
 -CAM table, FIB forward information base
 
 -Un switch utilise les frame ethernet pour savoir la MAC address source du port sur lequel il reçoit la frame, afin de pouvoir
-envoyer sur ce port là si jamais il reçoit un paquet pour cette destination. Si il n'a pas la destination dans sa table, il
+envoyer sur ce port là si jamais il reçoit un paquet pour cette destination. Si il n'a pas la destination dans sa table, il envoie
+la trame ethernet sur tous ses ports.
+Dans ce cas là je ne crois même pas que la source réponds. Le switch ne mettra une adresse MAC dans sa table seulement lorsqu'il
+fait transiter un packet. Lorsqu'il reçoit un paquet il note l'adresse MAC de la source si il ne la connait pas, avec en 
+correspondance le port sur lequel il a reçu le paquet. Il ne faut pas confondre ça avec un broadcast ARP lorsqu'un ordinateur
+ne connait pas l'adresse MAC d'un appareil sur son réseau.
+Un switch donc ne touche pas aux addresses MAC dans les paquets
 
 mac address du switch pour pouvoir ssh dedans ou pour communiquer sur un reseau entre les switchs pour des trucs comme le 
 spanning protocol.
@@ -52,3 +66,9 @@ ARP PROTOCOL
 
 --------------------
 HOW IS MULTIPLEXING DONE AT THE PHYSICAL LAYER ? 
+
+
+
+
+--------------------
+GATEWAY
