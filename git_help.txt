@@ -3,6 +3,19 @@ GIT HELP
 
 
 
+
+
+
+
+
+--------------------
+CONFIGURE COMMIT MAIL TO SEE CONTRIB ON GITHUB
+
+git config --global user.email <mail>
+pour checker 
+git config --global user.email
+
+
 --------------------
 CONFIGURE GIT EDITOR
 
