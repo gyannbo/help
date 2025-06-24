@@ -7,9 +7,12 @@ PROXY HELP
 --------------------
 PROXY ON GIT
 
+git config --global http.proxy http://guillaume.bonis2025@proxy44-far.ad.campus-eni.fr:8080
+
 [http]
 	proxy = http://guillaume.bonis2025@proxy44-far.ad.campus-eni.fr:8080
 
 -Pas besoin de mettre le mot de passe, le shell promptera pour le mot de passe.
 Pour pouvoir push il faudra générer un token github et s'authentifier en ligne de commande 
 lorsqu'on pushera.
+Sur internet tout le monde disait de mettre le mot de passe comme ça http://user:password@server:port
