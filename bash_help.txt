@@ -2,9 +2,73 @@ BASH HELP
 --------------------
 
 
+ask
+
+-why (( )) in for loop or var / what are double parentheses
+-check special variables
 
 
 
+
+
+
+
+--------------------
+SHEBANG ?
+
+#!nomdubinaire
+
+Spécifie un interpréteur pour le script.
+Peut être un shell, sed, awk, python etc..
+
+
+
+--------------------
+SCRIPT SYNTAX ON CLI
+
+block delimiter seems to be \n, like in command line to delimitate between commands.
+Write ; to separate scripting blocks on CLI.
+One can even to an interactive script, or at least a control structure block, on 
+the command line by typing the first line of a control structure.
+
+Also tabs are not needed in scripts, it is only for readability.
+
+
+--------------------
+WHILE LOOP
+
+var=0
+
+while [ $var -lt 10 ]
+	do
+		echo "cui cui"
+		let "var += 1"
+	done
+exit
+
+
+-brackets are mandatory, except maybe with getops
+-use operators like -lt -gt -ne -eq -le -ge
+
+-syntax pour incrémenter la variable:
+	-let "var += 1"
+	-var=$((var + 1))
+	-var=$(($var+1))
+
+
+
+WHILE LOOP WITH MULTIPLE CONDITIONS
+
+i=0
+while echo "this is the state of the i : $i"
+    echo "nevermind this is : $i"
+    echo "oups that was : $i"
+    [ $i -lt 10 ]
+    do
+        echo "$i eme lol"
+        let "i += 1"
+    done
+exit
 
 --------------------
 FOR LOOP
@@ -17,6 +81,13 @@ REMPLIR UN ARRAY AVEC UNE RANGE
 for i in {0..10}; do array[$i]=$i; done
 for i in {0..10}; do echo ${array[$i]}; done
 
+C STYLE FORLOOP
+
+for ((i ; i < 10; i++))
+	do
+		echo lol
+	done
+exit
 
 
 --------------------
@@ -37,3 +108,22 @@ for i in {0..10}; do echo ${array[$i]}; done
 SPECIAL VARIABLES
 
 -positional parameters
+
+script;sh :
+
+echo $0
+echo $1
+echo $2
+echo $3
+echo $4
+echo $@
+
+output:
+gbonis@debian:~/trash$ ./trash.sh oui pourquoi lol non
+./trash.sh
+oui
+pourquoi
+lol
+non
+oui pourquoi lol non
+

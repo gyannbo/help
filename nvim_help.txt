@@ -11,6 +11,13 @@ HELP NVIM
 
 
 --------------------
+INCREMENT A NUMBER
+
+ctrl-a
+
+
+
+--------------------
 NAVIGATING BIG CODEBASE WITH GREP
 
 -find . -name '*.c' | xargs grep ' main(' 
