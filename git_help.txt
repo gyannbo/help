@@ -1,0 +1,16 @@
+GIT HELP
+--------------------
+
+
+
+--------------------
+CONFIGURE GIT EDITOR
+
+git config --global core.editor nvim
+
+
+
+--------------------
+CONFIGURE HTTP PROXY
+
+git config --global http.proxy http://username(:password)@server:port

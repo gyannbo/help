@@ -10,6 +10,18 @@ NETWORKS HELP
 
 
 --------------------
+RIPE WHOIS DATABASE 
+
+(s'entrainer en sql sur cette database)
+
+--------------------
+DMZ
+
+-network outside the NAT and the firewall, potentially accessible by the internet. Used for auth servers, web servers.
+Separated from the local network.
+
+
+--------------------
 COLISION DOMAINS
 
 
