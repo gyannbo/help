@@ -24,6 +24,14 @@ DIFFUSION DOMAINS
 spanning tree protool et problemede tempete de diffusions
 
 
+--------------------
+NETWORK SEGMENT
+
+-layer 1 segment
+-layer 2 segment
+-layer 3 segment
+
+
 
 --------------------
 SWITCH
@@ -58,3 +66,9 @@ ARP PROTOCOL
 
 --------------------
 HOW IS MULTIPLEXING DONE AT THE PHYSICAL LAYER ? 
+
+
+
+
+--------------------
+GATEWAY
