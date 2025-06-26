@@ -8,12 +8,26 @@ GIT HELP
 
 
 
+
+
+--------------------
+--SYSTEM OR --GLOBAL
+
+--global j'ai l'impression que c'est juste le repo, je sais pas c'est bizarre.
+
+
+
+
+
 --------------------
 CONFIGURE COMMIT MAIL TO SEE CONTRIB ON GITHUB
 
-git config --global user.email <mail>
+git config --system user.email <mail>
 pour checker 
-git config --global user.email
+git config --system user.email
+
+Je pense que c'est system pour config sur la machine, ça le met dans le .gitconfig, --global
+ça le met dans le .git dit le man.
 
 
 --------------------
