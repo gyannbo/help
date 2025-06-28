@@ -1,0 +1,29 @@
+TMUX HELP
+--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------
+ROTATE THROUGH PANES
+
+ctrl+b arrows
+
+
+
+--------------------
+NEW PANES
+
+
+ctrl+b " vert split
+ctrl+b % horiz split

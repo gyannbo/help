@@ -1,0 +1,40 @@
+LINUX  HELP
+--------------------
+
+
+
+
+
+
+
+
+
+
+
+--------------------
+LEARN TMUX INSTEAD OF TERMINATOR, WORKS ON NON GRAPHICAL
+
+
+
+
+
+
+
+--------------------
+DIFFERENT WORKSPACES IN GRAPHICAL DEBIAN/CINNAMON
+
+
+alt+f1   <workspace num>
+
+
+
+--------------------
+OPEN NON GRAPHICAL/GRAPHICAL/DIFFERENT TTY
+
+
+ctrl+alt+F1 ctrl+alt+f2 etc. On debian latpop graphical is ctrl+alt+f7
+
+
+
+
+
