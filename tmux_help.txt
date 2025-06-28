@@ -14,10 +14,26 @@ TMUX HELP
 
 
 
+
+
+
+--------------------
+RESIZE PANES
+
+
+-ctrl+b ctrl+arrows
+
+-for some reason doesnt work in no gui mode, need to do this on command line
+:resize-pane -R 30   for resize to the right 30 cells
+
+
+
 --------------------
 ROTATE THROUGH PANES
 
 ctrl+b arrows
+
+
 
 
 
