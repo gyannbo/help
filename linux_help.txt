@@ -11,6 +11,30 @@ LINUX  HELP
 
 
 
+
+
+--------------------
+SYSTEMCTL TARGETS
+
+-systemctl isolate graphical.target      to go to graphical interface
+-systemctl isolate multi-user.target      doesnt work for some reason
+
+can do
+-systemctl set-default multi-user.target   to run multi-user.targetl, or ctrl-alt f1
+
+People are saying it is better to not use isolate, because of the dependencies between units, and
+use set-default to do testing.
+
+En fait on dirait que le fait de faire isolate multi-user.target ca shutdown le f7 sans switch sur le
+tty1, alors quand on set-default sur multi-user.target on boot direct sur le tty1 et on peut pas switcher
+sur le tty7.
+D'ailleurs je crois que lorsqu'on fait isolate graphical.target sur le tty1 on est automatiquement 
+switche sur le tty7.
+Oui je viens de test c'est ca.
+Donc on peut utiliser isolate target c'est juste que faut etre au courant qu'on est pas mis sur le tty1
+en partant de graphical vers multi-user.
+
+
 --------------------
 LEARN TMUX INSTEAD OF TERMINATOR, WORKS ON NON GRAPHICAL
 
