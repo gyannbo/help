@@ -34,6 +34,8 @@ Oui je viens de test c'est ca.
 Donc on peut utiliser isolate target c'est juste que faut etre au courant qu'on est pas mis sur le tty1
 en partant de graphical vers multi-user.
 
+systemctl get-default    to know which target is currnently the default
+
 
 --------------------
 LEARN TMUX INSTEAD OF TERMINATOR, WORKS ON NON GRAPHICAL
