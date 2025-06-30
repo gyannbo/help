@@ -1,0 +1,18 @@
+VIRTU HELP
+--------------------
+
+
+
+
+--------------------
+VIRTUAL BOX WINDOWS: CANNOT READ PRODUCT KEY UNNATENDED FILE
+
+-stop machine
+-settings -> expert mode
+-go to advanced tab
+-copy path without snapshots
+-open file explorer with this path
+-delete unnatended  config file
+-untick floppy from motherboard setting / boot order
+-reboot machine
+
