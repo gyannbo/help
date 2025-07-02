@@ -4,6 +4,21 @@ VIRTU HELP
 
 
 
+
+
+
+--------------------
+PROBLEM INSTALL DEBIAN
+
+-ne pas faire d'abord des partitions sur les disques, avoir les mountpoints etc, puis ensuite
+les volume avec lvm. Meme si il nous laisse faire après ça fait totalement malfonctionner l'installation.
+Je ne sais pas si c'est vraiment ça mais j'ai été de reprendre de zéro l'installation, meme après avoir
+supprimé les partitions, volume lvm, meme comme ça l'install ne fonctionnais pas.
+
+
+
+
+
 --------------------
 VIRTUAL BOX WINDOWS: CANNOT READ PRODUCT KEY UNNATENDED FILE
 

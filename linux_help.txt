@@ -13,6 +13,22 @@ LINUX  HELP
 
 
 
+
+
+
+--------------------
+TRICK GIT ADD
+
+-if several file in a dir, one can do:
+git add dir/{fil!,file@,file3}
+tab will work.
+
+
+
+
+
+
+
 --------------------
 SYSTEMCTL TARGETS
 
