@@ -13,6 +13,75 @@ ask
 
 
 
+
+
+
+
+
+
+
+
+
+
+--------------------
+BASH <SCRIPT> AND ./<SCRIPT>
+
+En lancant le script via bash, bash a juste besoin de lire dans le fichier et va interpreter lignes par 
+lignes les commandes>
+En lancant directement le script via ./ l'os va traiter le script comme un programme sur lequel on doit
+avoir les droits en execution. Meme si apres il va regarder quel est l'interpreteur et faire essentiellement
+la meme chose c'est pour ca que le noyau va refuser si on essaie d'executer directement le script comme ca.
+
+
+
+
+
+
+
+
+
+
+
+--------------------
+. OR SOURCE COMMAND
+
+if script :
+var='Hello'
+If script run:
+-sh script
+-./script
+afterwise echo $var won't print anything but if run like this:
+. script
+source script
+echo $var will print Hello
+ATTENTION, le script si il est run avec source ne doit pas exit a la fin sinon 
+le shell exitera lui aussi.
+
+
+
+
+
+
+--------------------
+{  }  grouping commands
+
+{ } to group output of commands:
+
+-{ echo 1 | echo 2 | ls . } > test.txt
+-if [[ test1 ]] && { [[ test2 || test3 ]] }
+
+
+
+
+
+
+
+
+
+
+
+
+
 --------------------
 SHEBANG ?
 
