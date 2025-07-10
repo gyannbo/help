@@ -1,0 +1,42 @@
+PYTHON HELP
+--------------------
+
+
+
+
+
+
+
+--------------------
+ARGV
+
+import sys
+argv[0] est le premier argument après l'interpéteur python sur la ligne de commande:
+python3 test.py 1 2
+print(argv[0])
+print(argv[1])
+print(argv[2])
+output:
+test.py
+1
+2
+
+
+
+
+--------------------
+PYTHON -C
+
+python3 -c "i = 1 + 1; print(i)" 
+
+
+--------------------
+DIVISON AVEC RESTE
+
+9//8
+9%8
+
+--------------------
+POWER / PUISSANCE
+
+2 ** 4     2 puissance 4
