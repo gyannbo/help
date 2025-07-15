@@ -7,6 +7,25 @@ PYTHON HELP
 
 
 
+
+
+
+
+
+
+
+--------------------
+PATTERN MATCHING
+
+-careful, True and False must have the capital letter, otherwise I think python
+thinks its variable declaration
+
+
+
+
+
+
+
 --------------------
 ARGV
 
