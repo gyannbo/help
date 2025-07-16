@@ -14,6 +14,28 @@ PYTHON HELP
 
 
 
+
+
+
+
+
+
+
+
+
+
+--------------------
+TABS AND SPACES
+
+-avoir les mêmes manières d'indenter avec les espaces et tabs. Si on fait un copier coller
+de code on aura les espaces à la place de tabs et ça fail.
+
+
+
+
+
+
+
 --------------------
 PATTERN MATCHING
 
