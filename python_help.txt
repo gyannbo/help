@@ -19,8 +19,12 @@ PYTHON HELP
 
 
 
+--------------------
+USE CLASS MEMBERS IN MATCH STATEMENT
 
-
+match instance:
+	case ClassInstance(x = 10, y = 20) as c:
+		print(f" x = {c.x} y = {c.y}")
 
 
 
