@@ -1,0 +1,7 @@
+MARKDOWN HELP
+--------------------
+
+https://daringfireball.net/projects/markdown/
+
+-sur vscode, si on fait ctrl-shift-v pour voir la preview en live.
+

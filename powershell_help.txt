@@ -1,0 +1,1118 @@
+POWERSHELL
+-------------
+
+
+
+
+
+
+
+
+
+
+
+-------------
+SCONFIG
+
+-sconfig : commande pour configurer un serveur en ligne de commande (uniquement config initiale)
+
+
+
+-------------
+SEARCH FOR A FILE USING THE DATE
+//  remettre le site ou y'avait ces exemples:  
+//  https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/
+
+$FindDate=Get-Date -Year 2016 -Month 06 -Day 24
+
+Get-ChildItem -Path C:\ -Include *.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -ge $FindDate }
+
+-------------
+SEARCH FOR ALL PORTS FILE
+
+(admin)
+get-childitem c: -recurse *services | select fullname
+
+
+
+
+-------------
+SEARCH ALL MSC CONSOLE
+
+(admin)
+get-childitem c: -recurse *.msc | select fullname
+
+
+-------------
+SEARCH FILES IN POWERSHELL
+
+(en admin)
+-get-childitem c: -recurse *.jpg
+(relatively fast)
+
+
+https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/
+
+
+
+
+-------------
+CHANGE CONNECTION PROFILE
+
+get-netconnectionprofile
+
+set-netconnectionprofile -interfacealias ethernet0 -networkprofile public
+
+
+
+
+
+
+-------------
+RENAME-COMPUTER
+
+rename computer
+
+
+
+
+-------------
+CONVERSION GB MB ETC SUR LA LIGNE DE COMMANDE
+
+>8GB
+>8589934592
+
+
+
+
+
+-------------
+FOREACH ET FOREACH-OBJECT
+
+
+foreach needs data to be in memory, typically foreach-object is after a pipe.
+
+
+
+'ActiveDirectory', 'SQLServer' |
+ ForEach-Object {Get-Command -Module $_} |
+ Group-Object -Property ModuleName -NoElement |
+ Sort-Object -Property Count -Descending
+
+output
+
+ 147 ActiveDirectory
+ 82 SqlServer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------
+HASHTABLE
+
+$agelist = @{}
+$agelist.Add('kevin', 10)
+$agelist.Add('alex', 9)
+$agelist['kevin']
+10
+$agelist['alex']
+9
+$agelist['francis'] = 24
+$agelist['francis']
+24
+
+ou alors
+
+$agelist = @{
+	kevin = 10
+	alex = 9
+}
+
+plutot utiliser Measure-object plutot que .count pour les hastables.
+(il y a une diff en foreach et foreach-object ?)
+
+
+
+
+
+
+
+
+
+
+
+-------------
+LAST COMMANDE RETURN VARIABLE
+
+-$?
+
+ou non, 
+-$Error, contains an array of error objects that represent the most recent errors. the most
+recent error is at the [0]
+
+
+
+
+
+
+-------------
+OPERATORS
+
+
+
+
+-------------
+AVOIR NOM DNS DE LA MACHINE
+
+"$env:computername.$env:userdnsdomain"   /// COMPRENDRE
+
+[System.Net.Dns]::GetHostByName($env:computerName) /// COMPRENDRE
+
+FQDN, fully qualified domain name
+
+
+
+
+-------------
+TEE-OBJECT
+
+
+
+
+-------------
+ARRAY OF OBJECTS
+
+-on utilise le { avec l'opérateur @, donc @{}
+
+> $data = @(
+ [pscustomobject]@{FirstName='Kevin';LastName='Marquette'}
+ [pscustomobject]@{FirstName='John'; LastName='Doe'}
+)
+
+> $data[1].Firstname
+John
+
+> $data | ForEach-Object {$_.Lastname}
+Marquette
+Doe
+
+ou
+>$data.lastname
+Marquette
+Doe
+
+
+
+
+
+-------------
+ARRAYS ACCESS OPERATORS
+
+on peut faire
+
+array[0..n] pour lister les objets dans l'array.
+
+On peut aussi faire à l'inverse avec des chiffres négatifs:
+array[-1] représente le dernier élément de l'array et :
+array [-1..-10] mais attention on peut pas faire array[-1..0] car ça va afficher
+juste la derniere puis la premiere data.
+
+
+
+
+-------------
+ARRAY PROPERTIES COUNT / LENGTH
+
+$a = @(0,1,2,3,4,5,6,7,8,9)
+$a.count
+10
+
+
+
+
+
+
+
+
+-------------
+ARRAYS SKIPUNTIL
+
+
+
+
+
+
+
+
+
+
+
+-------------
+OBJECTS ARRAYS
+
+-contains 
+
+
+
+
+-------------
+USE VARIABLE FOR ONE PROPERTY
+
+PS C:\Users\adm> $printername = get-printer *HP*
+PS C:\Users\adm> $printername.name
+HP LaserJet
+PS C:\Users\adm> get-printer $printername.name | select shared
+
+Parce que sinon, ça fait ça:
+
+//PS C:\Users\adm> get-printer $printername | select name,shared,sharedname
+//get-printer : Aucun objet MSFT_Printer avec la propriété «Name» égale à «@{name=HP LaserJet}» n’a été trouvé. Vérifiez
+//la valeur de la propriété et réessayez.
+//Au caractère Ligne:1 : 1
+//+ get-printer $printername | select name,shared,sharedname
+//+ ~~~~~~~~~~~~~~~~~~~~~~~~
+//    + CategoryInfo          : ObjectNotFound: (@{name=HP LaserJet}:String) [Get-Printer], CimJobException
+//    + FullyQualifiedErrorId : CmdletizationQuery_NotFound_Name,Get-Printer
+
+
+-------------
+FILTER SOMETHING BY THE OBJECT PROPERTY
+
+get-printer | Where-Object -property type -eq 'connection'
+(je cherchais comment selectionner juste le printer qui avait comme propiété 'connection'
+
+
+
+-------------
+PSItem / $_ / pipeline object
+
+
+
+
+-------------
+@ / ARRAYS
+
+-pour faire des arrays.
+-fonctionne aussi avec des virgules.
+
+-ATTENTION, on doit utiliser les  @() pour faire des arrays avec des value type, mais
+on peut aussi faire des arrays avec des objects types avec les {}, donc @{}
+
+l'exemple que je regardais pour faire des ACL
+On a l'exemple d'un array viq virgule, et {}.
+
+<code>
+$NewAcl = Get-Acl -Path "C:\Pets\Dog.txt"
+# Set properties
+$identity = "BUILTIN\Administrators"
+$fileSystemRights = "FullControl"
+$type = "Allow"
+# Create new rule
+$fileSystemAccessRuleArgumentList = $identity, $fileSystemRights, $type
+$newParams = @{
+  TypeName     = 'System.Security.AccessControl.FileSystemAccessRule'
+    ArgumentList = $fileSystemAccessRuleArgumentList
+}
+$fileSystemAccessRule = New-Object @newParams
+# Apply new rule
+$NewAcl.SetAccessRule($fileSystemAccessRule)
+Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl
+<code>
+
+-------------
+POUR AVOIR LES MEMBRES ET METHOD D'UN OBJET
+
+exemple:
+get-localuser <user> | get-member 
+
+
+
+
+
+-------------
+AFFICHER TOUT LA TAB COMPLETION
+
+-ctrl-space
+
+
+
+
+-------------
+TOUTES LES COMMANDES DOS
+
+https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/windows-commands
+
+
+
+-------------
+MS-DOS
+
+sfc /scan now
+
+pour vérifier les systèmes fichiers.
+
+
+
+
+-------------
+* DANS CHAINE POUR QUE ÇA FONCTIONNE
+
+get-localgroup 'utilisateur du bureau*' | select *
+et on aura le select sur les utilisateurs du bureau <a distance>.
+Alors que si on met * en dehors des quotes on aura pas le résultat.
+
+
+-------------
+AVOIR LES MÉTHODES D'UN OBJET
+
+D'abord avoir l'objet, donc voir dans les get-command *objet* ou get-*
+pour avoir tous les objet et ensuite si on a trouvé l'objet on peut 
+faire get-objet * | get-member , et on aura toutes les méthodes sur l'objet.
+
+exemple :
+"hello world" | get-member
+etc
+etc
+etc
+
+"hello world".SubString(6)
+
+-------------
+ESCAPE AVEC LE BACKTICK ? `
+
+
+
+
+-------------
+POUR AVOIR LES METHOD SUR UN OBJET POWERSHELL TRICK
+
+get-command *objet*
+get-command *user* par exemple
+
+ou par method
+
+get-command *new*
+get-command *select*
+
+
+
+
+
+-------------
+AVOIR IP
+
+get-netipconfiguration
+
+
+
+
+
+-------------
+POUR AVOIR HELP POWERSHELL
+
+command -? plutot que -h
+
+get-help -online commande
+get-help -examples commande
+get-help -showwindow commande
+
+
+
+-------------
+SET-LOCATION
+
+-comme cd
+
+-------------
+GREPPER LES ALIAS
+
+get-alias -definition get-childitem
+
+pour afficher tous les attributs des résultats:
+get-alias | select definition 
+get-alias | select *
+etc..
+
+-------------
+OBTENIR DES OBJETS
+
+get-childitem .
+
+
+-------------
+AVOIR LISTE DE TOUTES LES COMMANDES
+
+-get-command
+
+
+
+-------------
+VERSION DE POWERSHELL
+
+-$PSVerionTable
+-$host.version
+-get-host
+
+
+
+
+
+-------------
+PS ET KILL
+
+-fonctionne sur powershell
+
+-------------
+> et >>
+
+attention > écrase le fichier
+
+Sur Bash c'est pareil
+
+
+
+-------------
+REVERSE I SEARCH
+
+ctrl-r
+
+
+
+
+-------------
+PING PERMANENT
+
+-ping -t
+
+
+
+-------------
+TRACERT
+?
+
+
+
+-------------
+AUTRE MANIERE D'AVOIR L'HELP SUR WINDOWS
+
+-commande /?
+
+globalement /<etc> c'est la syntaxe sur windows / invite de commande (vieux, probablement)
+
+
+
+
+-------------
+ÉQUIVALENT DE MV / RENOMMER
+
+Rename-Item
+
+
+
+-------------
+REGARDER LES PARTITIONS (POUR CD DANS LA BONNE SI USB)
+
+get-partition
+
+
+
+
+-------------
+DEMARRER LOGICIEL 
+
+Start-process <logiciel, outlook par ex>
+
+-------------
+OUVRIR FICHIER
+
+Invoke-item <fichier>
+
+
+-------------
+ECHO ENV VARIABLE
+
+Get-ChildItem Env:
+
+
+
+-------------
+EQUIVALENT DU MAN
+
+
+- -h sur les commandes
+-non ya le man aussi un peu apparemment
+
+
+POWERSHELL
+-------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------
+SEARCH FOR A FILE USING THE DATE
+//  remettre le site ou y'avait ces exemples:  
+//  https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/
+
+$FindDate=Get-Date -Year 2016 -Month 06 -Day 24
+
+Get-ChildItem -Path C:\ -Include *.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -ge $FindDate }
+
+-------------
+SEARCH FOR ALL PORTS FILE
+
+(admin)
+get-childitem c: -recurse *services | select fullname
+
+
+
+
+-------------
+SEARCH ALL MSC CONSOLE
+
+(admin)
+get-childitem c: -recurse *.msc | select fullname
+
+
+-------------
+SEARCH FILES IN POWERSHELL
+
+(en admin)
+-get-childitem c: -recurse *.jpg
+(relatively fast)
+
+
+https://devblogs.microsoft.com/scripting/use-windows-powershell-to-search-for-files/
+
+
+
+
+-------------
+CHANGE CONNECTION PROFILE
+
+get-netconnectionprofile
+
+set-netconnectionprofile -interfacealias ethernet0 -networkprofile public
+
+
+
+
+
+
+-------------
+RENAME-COMPUTER
+
+rename computer
+
+
+
+
+-------------
+CONVERSION GB MB ETC SUR LA LIGNE DE COMMANDE
+
+>8GB
+>8589934592
+
+
+
+
+
+-------------
+FOREACH ET FOREACH-OBJECT
+
+
+foreach needs data to be in memory, typically foreach-object is after a pipe.
+
+
+
+'ActiveDirectory', 'SQLServer' |
+ ForEach-Object {Get-Command -Module $_} |
+ Group-Object -Property ModuleName -NoElement |
+ Sort-Object -Property Count -Descending
+
+output
+
+ 147 ActiveDirectory
+ 82 SqlServer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------
+HASHTABLE
+
+$agelist = @{}
+$agelist.Add('kevin', 10)
+$agelist.Add('alex', 9)
+$agelist['kevin']
+10
+$agelist['alex']
+9
+$agelist['francis'] = 24
+$agelist['francis']
+24
+
+ou alors
+
+$agelist = @{
+	kevin = 10
+	alex = 9
+}
+
+plutot utiliser Measure-object plutot que .count pour les hastables.
+(il y a une diff en foreach et foreach-object ?)
+
+
+
+
+
+
+
+
+
+
+
+-------------
+LAST COMMANDE RETURN VARIABLE
+
+-$?
+
+ou non, 
+-$Error, contains an array of error objects that represent the most recent errors. the most
+recent error is at the [0]
+
+
+
+
+
+
+-------------
+OPERATORS
+
+
+
+
+-------------
+AVOIR NOM DNS DE LA MACHINE
+
+"$env:computername.$env:userdnsdomain"   /// COMPRENDRE
+
+[System.Net.Dns]::GetHostByName($env:computerName) /// COMPRENDRE
+
+FQDN, fully qualified domain name
+
+
+
+
+-------------
+TEE-OBJECT
+
+
+
+
+-------------
+ARRAY OF OBJECTS
+
+-on utilise le { avec l'opérateur @, donc @{}
+
+> $data = @(
+ [pscustomobject]@{FirstName='Kevin';LastName='Marquette'}
+ [pscustomobject]@{FirstName='John'; LastName='Doe'}
+)
+
+> $data[1].Firstname
+John
+
+> $data | ForEach-Object {$_.Lastname}
+Marquette
+Doe
+
+ou
+>$data.lastname
+Marquette
+Doe
+
+
+
+
+
+-------------
+ARRAYS ACCESS OPERATORS
+
+on peut faire
+
+array[0..n] pour lister les objets dans l'array.
+
+On peut aussi faire à l'inverse avec des chiffres négatifs:
+array[-1] représente le dernier élément de l'array et :
+array [-1..-10] mais attention on peut pas faire array[-1..0] car ça va afficher
+juste la derniere puis la premiere data.
+
+
+
+
+-------------
+ARRAY PROPERTIES COUNT / LENGTH
+
+$a = @(0,1,2,3,4,5,6,7,8,9)
+$a.count
+10
+
+
+
+
+
+
+
+
+-------------
+ARRAYS SKIPUNTIL
+
+
+
+
+
+
+
+
+
+
+
+-------------
+OBJECTS ARRAYS
+
+-contains 
+
+
+
+
+-------------
+USE VARIABLE FOR ONE PROPERTY
+
+PS C:\Users\adm> $printername = get-printer *HP*
+PS C:\Users\adm> $printername.name
+HP LaserJet
+PS C:\Users\adm> get-printer $printername.name | select shared
+
+Parce que sinon, ça fait ça:
+
+//PS C:\Users\adm> get-printer $printername | select name,shared,sharedname
+//get-printer : Aucun objet MSFT_Printer avec la propriété «Name» égale à «@{name=HP LaserJet}» n’a été trouvé. Vérifiez
+//la valeur de la propriété et réessayez.
+//Au caractère Ligne:1 : 1
+//+ get-printer $printername | select name,shared,sharedname
+//+ ~~~~~~~~~~~~~~~~~~~~~~~~
+//    + CategoryInfo          : ObjectNotFound: (@{name=HP LaserJet}:String) [Get-Printer], CimJobException
+//    + FullyQualifiedErrorId : CmdletizationQuery_NotFound_Name,Get-Printer
+
+
+-------------
+FILTER SOMETHING BY THE OBJECT PROPERTY
+
+get-printer | Where-Object -property type -eq 'connection'
+(je cherchais comment selectionner juste le printer qui avait comme propiété 'connection'
+
+
+
+-------------
+PSItem / $_ / pipeline object
+
+
+
+
+-------------
+@ / ARRAYS
+
+-pour faire des arrays.
+-fonctionne aussi avec des virgules.
+
+-ATTENTION, on doit utiliser les  @() pour faire des arrays avec des value type, mais
+on peut aussi faire des arrays avec des objects types avec les {}, donc @{}
+
+l'exemple que je regardais pour faire des ACL
+On a l'exemple d'un array viq virgule, et {}.
+
+<code>
+$NewAcl = Get-Acl -Path "C:\Pets\Dog.txt"
+# Set properties
+$identity = "BUILTIN\Administrators"
+$fileSystemRights = "FullControl"
+$type = "Allow"
+# Create new rule
+$fileSystemAccessRuleArgumentList = $identity, $fileSystemRights, $type
+$newParams = @{
+  TypeName     = 'System.Security.AccessControl.FileSystemAccessRule'
+    ArgumentList = $fileSystemAccessRuleArgumentList
+}
+$fileSystemAccessRule = New-Object @newParams
+# Apply new rule
+$NewAcl.SetAccessRule($fileSystemAccessRule)
+Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl
+<code>
+
+-------------
+POUR AVOIR LES MEMBRES ET METHOD D'UN OBJET
+
+exemple:
+get-localuser <user> | get-member 
+
+
+
+
+
+-------------
+AFFICHER TOUT LA TAB COMPLETION
+
+-ctrl-space
+
+
+
+
+-------------
+TOUTES LES COMMANDES DOS
+
+https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/windows-commands
+
+
+
+-------------
+MS-DOS
+
+sfc /scan now
+
+pour vérifier les systèmes fichiers.
+
+
+
+
+-------------
+* DANS CHAINE POUR QUE ÇA FONCTIONNE
+
+get-localgroup 'utilisateur du bureau*' | select *
+et on aura le select sur les utilisateurs du bureau <a distance>.
+Alors que si on met * en dehors des quotes on aura pas le résultat.
+
+
+-------------
+AVOIR LES MÉTHODES D'UN OBJET
+
+D'abord avoir l'objet, donc voir dans les get-command *objet* ou get-*
+pour avoir tous les objet et ensuite si on a trouvé l'objet on peut 
+faire get-objet * | get-member , et on aura toutes les méthodes sur l'objet.
+
+exemple :
+"hello world" | get-member
+etc
+etc
+etc
+
+"hello world".SubString(6)
+
+-------------
+ESCAPE AVEC LE BACKTICK ? `
+
+
+
+
+-------------
+POUR AVOIR LES METHOD SUR UN OBJET POWERSHELL TRICK
+
+get-command *objet*
+get-command *user* par exemple
+
+ou par method
+
+get-command *new*
+get-command *select*
+
+
+
+
+
+-------------
+AVOIR IP
+
+get-netipconfiguration
+
+
+
+
+
+-------------
+POUR AVOIR HELP POWERSHELL
+
+command -? plutot que -h
+
+get-help -online commande
+get-help -examples commande
+get-help -showwindow commande
+
+
+
+-------------
+SET-LOCATION
+
+-comme cd
+
+-------------
+GREPPER LES ALIAS
+
+get-alias -definition get-childitem
+
+pour afficher tous les attributs des résultats:
+get-alias | select definition 
+get-alias | select *
+etc..
+
+-------------
+OBTENIR DES OBJETS
+
+get-childitem .
+
+
+-------------
+AVOIR LISTE DE TOUTES LES COMMANDES
+
+-get-command
+
+
+
+-------------
+VERSION DE POWERSHELL
+
+-$PSVerionTable
+-$host.version
+-get-host
+
+
+
+
+
+-------------
+PS ET KILL
+
+-fonctionne sur powershell
+
+-------------
+> et >>
+
+attention > écrase le fichier
+
+Sur Bash c'est pareil
+
+
+
+-------------
+REVERSE I SEARCH
+
+ctrl-r
+
+
+
+
+-------------
+PING PERMANENT
+
+-ping -t
+
+
+
+-------------
+TRACERT
+?
+
+
+
+-------------
+AUTRE MANIERE D'AVOIR L'HELP SUR WINDOWS
+
+-commande /?
+
+globalement /<etc> c'est la syntaxe sur windows / invite de commande (vieux, probablement)
+
+
+
+
+-------------
+ÉQUIVALENT DE MV / RENOMMER
+
+Rename-Item
+
+
+
+-------------
+REGARDER LES PARTITIONS (POUR CD DANS LA BONNE SI USB)
+
+get-partition
+
+
+
+
+-------------
+DEMARRER LOGICIEL 
+
+Start-process <logiciel, outlook par ex>
+
+-------------
+OUVRIR FICHIER
+
+Invoke-item <fichier>
+
+
+-------------
+ECHO ENV VARIABLE
+
+Get-ChildItem Env:
+
+
+
+-------------
+EQUIVALENT DU MAN
+
+
+- -h sur les commandes
+-non ya le man aussi un peu apparemment
+
+
+
