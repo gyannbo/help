@@ -1,0 +1,12 @@
+SAN NAS HELP
+--------------------
+
+
+
+NAS:
+	-network attached storage
+
+Les deux ont été créé pour régler le problème de la mise à disposition de données à un grand nombre d'utilisateurs en
+même temps.
+
+
