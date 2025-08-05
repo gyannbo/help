@@ -11,6 +11,36 @@ POWERSHELL
 
 
 
+
+
+
+
+
+
+
+-------------
+ENV
+
+get-childitem env:
+$env:PATH
+
+
+
+
+
+
+-------------
+list module for get-command
+
+get-module -listavailable
+
+get-command -module storage
+
+
+
+
+
+
 -------------
 SCONFIG
 
