@@ -18,6 +18,21 @@ POWERSHELL
 
 
 
+
+
+
+
+-------------
+AFFICHER LA COMPLETION POSSIBLE
+
+-ctrl-space   après les flêches pour se déplacer
+
+
+
+
+
+
+
 -------------
 ENV
 
