@@ -10,6 +10,26 @@ HELP NVIM
 
 
 
+
+
+
+
+
+
+
+--------------------
+USE LUA FUNCTION IN FILE
+
+<mettre le curseur au bon endroit et faire v (visual mode)>
+:'<,'>luado return os.date()
+
+
+
+
+
+
+
+
 --------------------
 INCREMENT A NUMBER
 
