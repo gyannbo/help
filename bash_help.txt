@@ -21,7 +21,12 @@ ask
 
 
 
+--------------------
+BASH ARGUMENTS
 
+$@ for all args
+$1 for first arg
+$# for number of args
 
 --------------------
 BASH <SCRIPT> AND ./<SCRIPT>
