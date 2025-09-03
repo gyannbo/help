@@ -16,6 +16,56 @@ ask
 
 
 
+--------------------
+BASH ( (( [ [[ differences
+
+-()
+	-grouping construct, run what's inside in a subshell
+
+-(())
+	-expression arithmetique, fonctionnera avec:
+		- = (assignement)
+		- var++
+		- >
+		- && et &
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------
+BASH CASE
+
+case
+	clause1 )
+		command
+		command
+		;;
+	clause2 )
+		command
+		command
+		;;
+esac
+
+ex de clauses:
+	*[0-9]*)
+		command ;;
+	*)
+		command;;
+
+
+
 
 
 
@@ -27,6 +77,9 @@ BASH ARGUMENTS
 $@ for all args
 $1 for first arg
 $# for number of args
+
+
+
 
 --------------------
 BASH <SCRIPT> AND ./<SCRIPT>
