@@ -15,6 +15,31 @@ HELP NVIM
 
 
 
+--------------------
+TERMINAL IN NVIM
+
+:terminal
+
+ctrl-\ ctrl-n pour récupérer le curseur
+
+
+
+
+
+
+
+
+
+
+
+--------------------
+WINDOWS
+
+:vsplit
+:split
+
+ctrl-w h/j/k/l
+
 
 
 --------------------
