@@ -7,6 +7,16 @@ c help
 
 
 
+
+
+
+--------------------
+SETTING A STRUCT TO 0
+
+
+struct something = { 0 }    // needed this to pass valgrind on hcreate
+//can use memset also
+
 --------------------
 COMPOUND LITERAL
 
