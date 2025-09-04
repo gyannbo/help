@@ -17,6 +17,49 @@ ask
 
 
 --------------------
+PARAMETER EXPANSION
+
+${var,,}  tout en minuscule
+${var,}   premiere lettre en minuscule
+
+
+
+
+
+
+
+--------------------
+TIMEOUT POUR NE PAS ATTENDRE TROP LONGTEMPS UNE COMMANDE QUI FAIL
+
+if (timeout 0.2 ping -q4Ac 3 -W 1 $byte1.$byte2.$byte3.$byte4 &> /dev/null)
+
+
+
+
+
+
+
+--------------------
+INTERCEPT A SIGNAL IN A SCRIPT
+
+trap exit SIGINT
+
+
+
+
+
+
+--------------------
+ARRAY ASSIGNEMENT SYNTAX
+
+array=([0]=$byte1 [1]=$byte2 [2]=$byte3 [3]=$byte4)
+
+
+
+
+
+
+--------------------
 BASH ( (( [ [[ differences
 
 -()
@@ -29,17 +72,6 @@ BASH ( (( [ [[ differences
 		- >
 		- && et &
 		
-
-
-
-
-
-
-
-
-
-
-
 
 
 
