@@ -5,5 +5,30 @@ c help
 
 
 
+
+
+
+
+
+--------------------
+SETTING A STRUCT TO 0
+
+
+struct something = { 0 }    // needed this to pass valgrind on hcreate
+//can use memset also
+
+--------------------
+COMPOUND LITERAL
+
+to declare and assign a struct in a function call :
+void	foo((struct somestruct){ 10, 11});
+void	foo((int[]){ 10, 11});
+
+
+
+somePrintFunc((Exemple){10,  11});   /// with struct
+somePrintFunc((Exemple){.a = 10, .b =  11});   /// with struct
+somePrintFuncTab((int []){210, 3411});
+
 --------------------
 NAMING CONVENTION
