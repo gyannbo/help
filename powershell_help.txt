@@ -10,12 +10,38 @@ POWERSHELL
 
 
 
+-------------
+FICHIER DE PROFIL
+
+-New-Item  -Path $Profile -Type File -Force   (seulement pour terminal powershell, il y a d'autre pour powershell ISe et vscode)
 
 
 
 
 
 
+-------------
+MODULES
+
+$env:psmodulepath
+
+import-module -name <rep contenant le module (env:psmodulepath)>
+get-command -module <nom du module>      //Pour vérifier que le module est bien téléchargé dans le bon repo
+
+
+
+-------------
+EXECUTION POLICY
+
+
+Set ExecutionPolicy – ExecutionPolicy Unrestricted
+
+
+-------------
+GET-HELP
+
+get-help -name get-service -examples
+get-help -name get-service -showwindow
 
 
 
