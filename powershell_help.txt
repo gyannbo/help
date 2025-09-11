@@ -10,7 +10,48 @@ POWERSHELL
 
 
 
+[datetime]::ParseExact()
 
+
+
+
+
+
+-----------------------------
+typage de variable
+
+[int]$var= etc
+
+
+
+
+
+-----------------------------
+OUT-GRIDVIEW
+
+get-aduser -filter | out-gridview -title "merci de sélectionner un utilisateur dans la liste" -outputmode multiple
+
+
+
+
+
+
+-------------
+HELP
+
+-pour mieux comprendre une commande c'est bien de faire un -showwindow ou un -full.
+De cette manière on peut mieux voir les paramètres, leurs positions, s'ils sont obligatoires
+etc. On ne voit pas ça dans les help online de microsoft.
+
+
+
+-----------------------------
+MEASURE-OBJECT
+
+
+get-childitem -Path <path> -recurse | measure-object -property length -average
+get-childitem -Path <path> -recurse | measure-object -property length -minimum
+get-childitem -Path <path> -recurse | measure-object -property length -maximum
 
 
 
