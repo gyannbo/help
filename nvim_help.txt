@@ -15,6 +15,34 @@ HELP NVIM
 
 
 
+
+
+
+
+
+--------------------
+CODING WORKFLOW 
+
+:set switchbuf+=newtab
+
+:tabe
+:cd ./src 
+:grep -F 'main('
+:cw
+
+(ouvrir un terminal, avec vsplit etc)
+
+
+
+
+
+
+
+
+
+
+
+
 --------------------
 TERMINAL IN NVIM
 

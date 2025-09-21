@@ -17,6 +17,28 @@ PYTHON HELP
 
 
 
+--------------------
+COMMAND PYTHON IN SHELL + ERREUR CALCUL BINAIRE
+
+
+python3 -c 'print(bin(255))'
+python3 -c 'print(0b11111111)'
+python3 -c 'bin(255)'		n'affiche rien
+python3 -c 'int(0b1111111111)'   n'afficher rien
+python3 -c 'print(int(0b1111111111))'
+python3 -c 'print(int('1111111111', 2))'
+python3 -c 'print(int(1111111111, 2))'    non
+python3 -c 'print(int('0b1111111111', 2))'
+python3 -c 'print(int(11111,456))'   converti de float en int (c'est a ca que sert le fait de ne pas utiliser une string)
+
+Pour expliquer tout ça, j'utilisais mal la fonction int(), quand on utilise 0b1111 etc sans quote, c'est l'interpréteur
+qui traduit en binaire avant meme que l'argument arrive a int(), pour verifier ca on peut faire print(0b111111111), et on voit bien
+que le resultat est 255.
+Ensuite lorsque j'utilisais le mode commande de python (python3 -c 'commande') je ne comprenais pas pourquoi je n'avais pas le résultats
+qui s'affichait ou était utilisable, c'est parce que le shell ne peux capter que ce qui est sur le stdout, et donc pour faire cela on
+doit systematiquement faire print().
+J'ai mis quelque exemple de la vraie utilisation de int() apres pour mieux cerner comment on utilise cette fonction.
+
 
 
 --------------------

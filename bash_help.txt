@@ -17,6 +17,20 @@ ask
 
 
 
+--------------------
+BINARY BASE
+
+
+Voir arithmetic expansion
+Voir arithmetic evaluation
+
+$echo $((2#11111111)
+$255
+
+(bc pour faire la traduction inverse, mais utiliser python c'est mieux)
+
+
+
 
 
 --------------------
