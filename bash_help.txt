@@ -22,7 +22,7 @@ PARAMETER EXPANSION
 ${var,,}  tout en minuscule
 ${var,}   premiere lettre en minuscule
 
-${var/pattern/substitution} substituer un
+${var/pattern/substitution} substituer un 
 
 
 
