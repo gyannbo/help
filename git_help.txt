@@ -8,6 +8,13 @@ GIT HELP
 
 
 
+--------------------
+BRANCH GRAPH
+
+git log --graph
+
+
+
 
 
 --------------------
