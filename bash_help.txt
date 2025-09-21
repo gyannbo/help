@@ -14,6 +14,18 @@ ask
 
 
 
+--------------------
+INVERSION LOGIQUE (!)
+
+if [[ ! -d $rep ]]
+then
+	echo "$rep n'est pas un dossier"
+	exit
+fi
+
+
+
+
 
 
 --------------------
