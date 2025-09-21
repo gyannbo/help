@@ -6,11 +6,38 @@ ask
 
 -why (( )) in for loop or var / what are double parentheses
 -check special variables
+-export in subshell, can we keep the variables ? 
 
 
 
 
 
+
+
+
+
+
+
+
+--------------------
+EXPORT
+
+test.sh:
+export test=9
+echo $test
+
+$ ./test.sh
+$9
+$echo $test
+$
+
+$ . ./test.sh
+$9
+$echo $test
+$9
+
+Source execute le script dans le shell courant, sinon le script est lancé dans un subshell et on ne garde pas la variable
+meme avec export.
 
 
 
