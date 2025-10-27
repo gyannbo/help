@@ -13,6 +13,20 @@ LINUX  HELP
 
 
 --------------------
+NMCLI
+
+-changer ip via nmcli
+	-nmcli choper le nom en vert, pas le nom de l'interface ensXX ou le nom entre ""
+		-sudo nmcli connection modify Wired\ connection\ 1 ipv4.addresses 172.18.4.10/24
+			-nmcli connection down Wired\ connection\ 1 
+				-nmcli connection up Wired\ connection\ 1 
+					-systemctl restart networking.service
+
+
+
+
+
+--------------------
 SS
 
 
