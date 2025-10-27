@@ -1,0 +1,10 @@
+veeam help
+--------------------
+
+
+
+
+--------------------
+dans veeam, pour aller dans l'infrastructure on va dans inventory et la on voit la
+virtual infrastructure
+

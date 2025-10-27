@@ -8,7 +8,38 @@ POWERSHELL
 
 
 
+-----------------------------
+CLEAN WIPE A DISK
 
+diskpart
+list disk
+select disk n 
+clean all
+
+
+
+
+
+
+
+-----------------------------
+NEW IP
+
+get-netipinterface
+new-netipaddress -interfaceindex 6 -ipaddress 172.20.3.150
+new-netipaddress -interfaceindex 6 -ipaddress 172.20.3.150 -prefixlength 26 -defaultgateway 172.20.3.190
+
+(on peut seulement mettre la gateway avec new-ip, set ip ca fonctionne pas, et la gateway on peut pas la supprimer
+avec remove ip address)
+get-netipaddress
+remove-netipaddress -ipaddress 172.20.3.150 
+
+
+
+
+
+
+-----------------------------
 
 [datetime]::ParseExact()
 

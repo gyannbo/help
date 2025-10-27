@@ -12,6 +12,19 @@ LINUX  HELP
 
 
 
+--------------------
+SS
+
+
+ss -antlp     (checker le port de mariadb)
+
+
+
+
+--------------------
+MOUNT -A
+
+mount -a pour eviter de reboot, il relis le fstab
 
 
 
