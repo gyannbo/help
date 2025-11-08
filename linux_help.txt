@@ -11,20 +11,23 @@ LINUX  HELP
 
 
 
+--------------------
+DD  / create iso
 
-
-
+dd if=/path/to/iso of /dev/sdaX (use lsblk, but unmount this path before launching dd) status=progresss
 
 --------------------
 DISK USAGE
 
 df -H
 
+TOTAL SIZE OF A DIRECTORY
 
+du -ch /somedir  | grep 'total '   
 
 
 --------------------
-FILE SIZE 
+FILE SIZE' 
 
 df -h <file>
 
