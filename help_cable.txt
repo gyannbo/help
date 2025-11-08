@@ -1,0 +1,15 @@
+HELP CABLE
+--------------------
+
+
+
+U/UTP
+F/UTP
+U/FTP
+F/FTP
+S/FTP
+
+diaphonie ?
+
+masse ?
+
