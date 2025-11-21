@@ -1,0 +1,25 @@
+help grub
+--------------------
+
+
+
+--------------------
+BOOT FROM GRUB CLI
+
+
+-ls
+
+Should show something like (hd0,gpt1), in my case I had (hd0,msdos1) (hd0,msdos1,gpt1)   
+
+ls (hd0,gpt1)/ to show the content of the partiton.
+
+Search for /grub2 oor /boot/grub.
+Then do:
+
+set prefix=(hd0,gpt1)/something/boot/grub
+set root=(hd0,gpt1)
+insmod normal
+normal
+
+and this should boot the right grub install menu
+

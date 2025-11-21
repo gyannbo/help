@@ -1,0 +1,11 @@
+WINDOWS HELP
+____________________
+
+
+
+
+____________________
+SE CONNECTER AU WORKGROUP OU EN LOCAL
+
+.\user
+local\user   // a tester
